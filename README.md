@@ -27,6 +27,7 @@ aws ssm put-parameter --name '/path/to/value' --type String --value 'my secret v
 ### Example 1
 
 ```php
+use Aws\Ssm\SsmClient;
 use Sunaoka\SsmParametersLoader\ParametersLoader;
 
 putenv('MY_PARAMETER=ssm:/path/to/value')
@@ -45,6 +46,7 @@ echo env('MY_PARAMETER');
 ### Example 2
 
 ```php
+use Aws\Ssm\SsmClient;
 use Sunaoka\SsmParametersLoader\ParametersLoader;
 
 putenv('MY_PARAMETER=ssm:/path/to/value')
