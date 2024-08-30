@@ -12,8 +12,7 @@ class ParametersLoader
     public function __construct(
         private SsmClient $ssmClient,
         private string $prefix,
-    ) {
-    }
+    ) {}
 
     public function load(?string $prefix = null): void
     {
@@ -71,11 +70,11 @@ class ParametersLoader
             return [];  // @codeCoverageIgnore
         }
 
-        $environments = array_filter($environments, static fn (string $value): bool => str_starts_with($value, $prefix));
+        $environments = array_filter($environments, static fn(string $value): bool => str_starts_with($value, $prefix));
         if (count($environments) === 0) {
             return [];
         }
 
-        return array_map(static fn (string $value): string => substr($value, strlen($prefix)), $environments);
+        return array_map(static fn(string $value): string => substr($value, strlen($prefix)), $environments);
     }
 }
