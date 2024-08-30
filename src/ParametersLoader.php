@@ -65,12 +65,7 @@ class ParametersLoader
      */
     protected function getEnvironments(string $prefix): array
     {
-        $environments = getenv();
-        if (! is_array($environments)) {
-            return [];  // @codeCoverageIgnore
-        }
-
-        $environments = array_filter($environments, static fn(string $value): bool => str_starts_with($value, $prefix));
+        $environments = array_filter(getenv(), static fn(string $value): bool => str_starts_with($value, $prefix));
         if (count($environments) === 0) {
             return [];
         }
