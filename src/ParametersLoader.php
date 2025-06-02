@@ -25,13 +25,14 @@ class ParametersLoader
     }
 
     /**
+     * @param array<string, string>|null $environments
      * @return array<string, string>
      *
      * @link https://docs.aws.amazon.com/systems-manager/latest/APIReference/API_GetParameters.html
      */
-    public function getParameters(?string $prefix = null): array
+    public function getParameters(?string $prefix = null, ?array $environments = null): array
     {
-        $environments = $this->getEnvironments($prefix ?? $this->prefix);
+        $environments = $environments ?? $this->getEnvironments($prefix ?? $this->prefix);
         $parameters = [];
         $invalidParameters = [];
 
